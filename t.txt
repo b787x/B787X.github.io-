@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Running server.py on button click</title>
+  </head>
+  
+  <body>
+    <h1>Running server.py on button click</h1>
+    <hr>
+      
+    <!-- Display result -->
+    <div id="result"></div>
+
+    <!-- Submit button -->
+    <button onclick="runServer()">Run Server</button>
+      
+    <!-- Script to run server.py -->
+    <script>
+      function runServer() {
+        // Create a new XMLHttpRequest object
+        let xhr = new XMLHttpRequest();
+          
+        // Define the URL of the server.py script to run
+        let url = "http://localhost:8080/run_server";  // Replace with your server URL
+          
+        // Set the request method to GET
+        xhr.open("GET", url, true);
+
+        // Define the response type as text
+        xhr.responseType = "text";
+
+        // Define the callback function to execute when the response is received
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            // Display the response in the result div
+            document.getElementById("result").innerHTML = xhr.responseText;
+          }
+        };
+
+        // Send the request to the server
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
