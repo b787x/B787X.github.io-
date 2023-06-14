@@ -1,3 +1,0 @@
-[21:47:30] [ServerMain/WARN]: Failed to add PDH Counter: \Paging File(_Total)\% Usage, Error code: 0xC0000BB8
-[21:47:30] [ServerMain/WARN]: Failed to add counter for PDH counter: \Paging File(_Total)\% Usage
-[21:47:30] [ServerMain/WARN]: Disabling further attempts to query Paging File.
