@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cool Styles</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+    body {
+      background: linear-gradient(to right, #ff4081, #00bcd4);
+      background-size: 200% 200%;
+      animation: gradientBackground 10s ease infinite;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBackground {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .message {
+      color: white;
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: blink 1s infinite;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    #return-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 150px;
+      height: 40px;
+      font-size: 18px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #return-button:hover {
+      background-color: #ff6699;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ff4081;
+      opacity: 0.8;
+      animation: particleAnimation 1s infinite ease-out;
+    }
+
+    @keyframes particleAnimation {
+      0%, 100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.8;
+      }
+      10% {
+        transform: translateY(-20px) translateX(10px) scale(1.2);
+        opacity: 0.6;
+      }
+      30% {
+        transform: translateY(-40px) translateX(0) scale(0.9);
+        opacity: 0.4;
+      }
+      50% {
+        transform: translateY(-65px) translateX(-10px) scale(1.1);
+        opacity: 0.2;
+      }
+      70% {
+        transform: translateY(-90px) translateX(0) scale(0.8);
+        opacity: 0.4;
+      }
+      90% {
+        transform: translateY(-110px) translateX(10px) scale(0.9);
+        opacity: 0.6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    这是index里的句子！
+  </div>
+
+  <button id="return-button">返回</button>
+
+  <script>
+    document.getElementById("return-button").addEventListener("click", function() {
+      window.location.href = "index.html";
+    });
+
+    function createParticle() {
+      var particle = document.createElement("div");
+      particle.className = "particle";
+      particle.style.left = Math.random() * 100 + "%";
+      particle.style.animationDuration = Math.random() * 2 + 1 + "s";
+      particle.style.animationDelay = Math.random() * 2 + "s";
+      document.body.appendChild(particle);
+
+      setTimeout(function() {
+        document.body.removeChild(particle);
+      }, 3000);
+    }
+
+    setInterval(createParticle, 100);
+  </script>
+</body>
+</html>
